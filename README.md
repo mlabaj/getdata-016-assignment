@@ -50,7 +50,7 @@ other attached packages:
 
 # Run
 
-Set working directory to a directory with the script: `setwd("path/to/script")` and source it: `source("run_analysis.R")`.
+Set working directory to a directory with the script: `setwd("path/to/script/")` and source it: `source("run_analysis.R")`.
 
 # More information
 
