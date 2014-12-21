@@ -19,9 +19,12 @@
 #   5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable
 #      for each activity and each subject.
 #
+#  The script expects input data in the structure of the unpacked referenced dataset.
+#  Resulting tidy datasets are stored in the working directory both as csv&txt tables in names determined by
+#  dataset[1/2].file.name variables.
+#
 # --------------------------------------------------
 library(reshape2)
-library(plyr)
 
 dataset1.file.name = "tidy_dataset"
 dataset2.file.name = "tidy_dataset_averages"
