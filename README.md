@@ -48,6 +48,10 @@ other attached packages:
 
 ```
 
+# Run
+
+Set working directory to a directory with the script: `setwd("path/to/script")` and source it: `source("run_analysis.R")`.
+
 # More information
 
 For more information on what is being done, see transformations description in [CodeBook.md](CodeBook.md) and also comments in [run_analysis.R](run_analysis.R).
