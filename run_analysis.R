@@ -20,6 +20,8 @@
 #      for each activity and each subject.
 #
 # --------------------------------------------------
+library(reshape2)
+library(plyr)
 
 dataset1.file.name = "tidy_dataset"
 dataset2.file.name = "tidy_dataset_averages"
@@ -66,8 +68,8 @@ all.subjects  <- rbind(s.train, s.test)
 #  2. Extract only means and standard deviations on measurements
 # --------------------------------------------------
 
-# name the features, feature labels: column1 = ID, column2 = feature label
-names(all.vectors) <- labels.features[,2]
+# name the features, feature labels: column1 (V1) = ID, column2 (V2) = feature label
+names(all.vectors) <- labels.features[,"V2"]
 
 # only columns with names including "mean()" or "std()"
 mean_std_columns <- grep("mean\\(\\)|std\\(\\)",names(all.vectors))
@@ -80,7 +82,10 @@ all.vectors <- all.vectors[,mean_std_columns]
 
 # activities:      column1 (V1) = ID
 # activity labels: column1 (V1) = ID, column2 (V2) = descriptive name
+all.activities$ID <- seq_along(all.activities$V1)
 all.activities <- merge(all.activities, labels.activities, by.x = "V1", by.y = "V1")
+all.activities <- all.activities[order(all.activities$ID),]
+
 all.activities <- all.activities[,"V2", drop=FALSE] # drop=F ensures the result is still a dataframe
 
 
@@ -104,6 +109,17 @@ write.csv(  dataset, file = paste(dataset1.file.name, "csv", sep="."), row.names
 # ----------------------------------------------------------------------------------------------------
 
 # --------------------------------------------------
-#  5. Create separate data set with averages
+#  5. Create separate data set with variable averages per subject and activity
 # --------------------------------------------------
 
+# melt into: subjectID, activity, variable, value
+melted <- melt(dataset, id = c("subjectID", "activity"))
+# recast into: subjectID, activity, variable1_avareage, variable2_average, ...
+dataset_avg <- dcast(melted, subjectID + activity ~ variable, mean)
+
+# rename (variable columns only) to include prefix "avg_"
+nlen <- length(names(dataset_avg))
+names(dataset_avg)[3:nlen] <- lapply(names(dataset_avg)[3:nlen], function(x) paste("avg_", x, sep="") )
+
+write.table(dataset_avg, file = paste(dataset2.file.name, "txt", sep="."), row.names = FALSE)
+write.csv(  dataset_avg, file = paste(dataset2.file.name, "csv", sep="."), row.names = FALSE)
