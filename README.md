@@ -50,4 +50,4 @@ other attached packages:
 
 # More information
 
-For more information, see description in [CodeBook.md](CodeBook.md) and comments in [run_analysis.R](run_analysis.R).
+For more information on what is being done, see transformations description in [CodeBook.md](CodeBook.md) and also comments in [run_analysis.R](run_analysis.R).
