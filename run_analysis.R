@@ -85,8 +85,11 @@ all.vectors <- all.vectors[,mean_std_columns]
 
 # activities:      column1 (V1) = ID
 # activity labels: column1 (V1) = ID, column2 (V2) = descriptive name
+
+# add a row number column, because merge does not preserve order
 all.activities$ID <- seq_along(all.activities$V1)
 all.activities <- merge(all.activities, labels.activities, by.x = "V1", by.y = "V1")
+# restore order using row numbers
 all.activities <- all.activities[order(all.activities$ID),]
 
 all.activities <- all.activities[,"V2", drop=FALSE] # drop=F ensures the result is still a dataframe

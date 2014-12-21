@@ -1,11 +1,11 @@
-Getting and Cleaning Data -- Course Project
+Getting and Cleaning Data Course Project
 ======================
 
 This is a Course Project for Getting and Cleanind Data course on Coursera.org
 
-* `README.md` -- This document.
-* `CodeBook.md` -- Code book covering input and output data and transformations done.
-* `run_analysis.R` -- Script for converting the source dataset into tidy dataset(s).
+* `README.md` - This document.
+* `CodeBook.md` - Code book covering input and output data and transformations done.
+* `run_analysis.R` - Script for converting the source dataset into tidy dataset(s).
 
 # Source Dataset
 
@@ -18,18 +18,18 @@ activityrecognition '@' smartlab.ws
 www.smartlab.ws
 ```
 
-When the script is run, the source dataset is downloaded a unpacked automatically (if the dataset directory does not exist).
+When the script is run, the source dataset is downloaded and unpacked automatically (if the dataset directory does not exist).
 
 # Resulting Dataset
 
 After running the script, two tidy datasets are created in the working directory.
 
-* `tidy_dataset.[csv/txt]` -- Contains measured values for each participant and his/her activities.
+* `tidy_dataset.[csv/txt]` - Contains measured values for each participant and his/her activities.
   * Train and test sets are merged.
   * Only mean and standard deviation based features are included for each measurement.
   * Activities have descriptive names.
   * Columns have descriptive variable names.
-* `tidy_dataset_averages.[csv/txt]` -- Contains the variables above averaged for each participant and activity.
+* `tidy_dataset_averages.[csv/txt]` - Contains the variables above averaged for each participant and activity.
 
 # Requirements
 
@@ -50,4 +50,4 @@ other attached packages:
 
 # More information
 
-For more information, see comments in `run_analysis.R` and description in `CodeBook.md`.
+For more information, see description in [CodeBook.md](CodeBook.md) and comments in [run_analysis.R](run_analysis.R).
