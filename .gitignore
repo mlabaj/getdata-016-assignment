@@ -3,3 +3,7 @@
 .RData
 UCI\ HAR\ Dataset.zip
 UCI\ HAR\ Dataset
+tidy_dataset.csv
+tidy_dataset.txt
+tidy_dataset_averages.csv
+tidy_dataset_averages.txt
